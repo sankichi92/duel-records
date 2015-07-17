@@ -17,11 +17,11 @@
 
   <div class="form-group">
     <%= f.label :winner %>
-    <%= f.collection_select :winner, @users, :id, :nickname, { selected: current_user.id }, { class: 'form-control' } %>
+    <%= f.collection_select :winner, User.all.order(:nickname), :id, :nickname, { selected: current_user.id }, { class: 'form-control' } %>
   </div>
   <div class="form-group">
     <%= f.label :loser %>
-    <%= f.collection_select :loser, @users, :id, :nickname, { selected: current_user.id }, { class: 'form-control' } %>
+    <%= f.collection_select :loser, User.all.order(:nickname), :id, :nickname, { selected: current_user.id }, { class: 'form-control' } %>
   </div>
   <div class="form-group">
     <%= f.label :date %>

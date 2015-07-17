@@ -3,7 +3,6 @@ class DuelsController < ApplicationController
 
   def new
     @duel = Duel.new
-    @users = User.all.order(:nickname)
   end
 
   def create
