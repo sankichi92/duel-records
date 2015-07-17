@@ -2,10 +2,7 @@ class Duel < ActiveRecord::Base
   validates :winner, presence: true
   validates :loser, presence: true
   validates :date, presence: true
-  validates :life_points, numericality: {
-    only_integer: true,
-    greater_than_or_equal_to: 0
-  }
+  validates :life_points, numericality: { only_integer: true, greater_than: 0 }
   validates :content, length: { maximum: 2000 }
   validate :winner_and_loser_should_be_different
 

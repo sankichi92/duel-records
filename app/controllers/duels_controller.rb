@@ -2,11 +2,12 @@ class DuelsController < ApplicationController
   before_action :authenticate
 
   def new
-    @duel = Duel.build
+    @duel = Duel.new
+    @users = User.all.order(:nickname)
   end
 
   def create
-    @duel = Duel.build(duel_params)
+    @duel = Duel.new(duel_params)
     if @duel.save
       redirect_to @duel, notice: '作成しました'
     else
