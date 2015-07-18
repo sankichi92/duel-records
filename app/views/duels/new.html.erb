@@ -16,16 +16,16 @@
   <% end %>
 
   <div class="form-group">
-    <%= f.label :winner %>
-    <%= f.collection_select :winner, User.all.order(:nickname), :id, :nickname, { selected: current_user.id }, { class: 'form-control' } %>
+    <%= f.label :winner_id %>
+    <%= f.collection_select :winner_id, User.all.order(:nickname), :id, :nickname, { selected: current_user.id }, { class: 'form-control' } %>
   </div>
   <div class="form-group">
-    <%= f.label :loser %>
-    <%= f.collection_select :loser, User.all.order(:nickname), :id, :nickname, { selected: current_user.id }, { class: 'form-control' } %>
+    <%= f.label :loser_id %>
+    <%= f.collection_select :loser_id, User.all.order(:nickname), :id, :nickname, { selected: current_user.id }, { class: 'form-control' } %>
   </div>
   <div class="form-group">
     <%= f.label :date %>
-    <%= f.date_field :date, start_year: now.year - 1, end_year: now.year, class: 'form-control' %>
+    <%= f.date_field :date, start_year: now.year - 1, end_year: now.year, class: 'form-control', value: Time.now.strftime("%Y-%am-%d") %>
   </div>
   <div class="form-group">
     <%= f.label :life_points %>

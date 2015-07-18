@@ -1,5 +1,9 @@
 class DuelsController < ApplicationController
-  before_action :authenticate
+  before_action :authenticate, except: :show
+
+  def show
+    @duel = Duel.find(params[:id])
+  end
 
   def new
     @duel = Duel.new
@@ -18,7 +22,7 @@ class DuelsController < ApplicationController
 
   def duel_params
     params.require(:duel).permit(
-      :winner, :loser, :date, :life_points, :content
+      :winner_id, :loser_id, :date, :life_points, :content
     )
   end
 end
