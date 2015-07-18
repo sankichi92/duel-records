@@ -57,6 +57,7 @@
   <div class="col-md-4">
     <% if logged_in? %>
       <%= link_to 'デュエルを編集する', edit_duel_path(@duel), class: 'btn btn-info btn-lg btn-block' %>
+      <%= link_to 'デュエルを削除する', duel_path(@duel), class: 'btn btn-danger btn-lg btn-block', method: :delete, data: { confirm: '本当に削除しますか？' } %>
     <% end %>
   </div>
 </div>
