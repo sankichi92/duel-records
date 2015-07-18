@@ -1,0 +1,11 @@
+ja:
+  activerecord:
+    models:
+      duel: デュエル
+    attributes:
+      duel:
+        winner: 勝者
+        loser: 敗者
+        date: 対戦日
+        life_points: 残りライフポイント
+        content: 内容
