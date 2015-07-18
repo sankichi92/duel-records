@@ -18,6 +18,25 @@ class DuelsController < ApplicationController
     end
   end
 
+  def edit
+    @duel = Duel.find(params[:id])
+  end
+
+  def update
+    @duel = Duel.find(params[:id])
+    if @duel.update(duel_params)
+      redirect_to @duel, notice: '更新しました'
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    @duel = Duel.find(params[:id])
+    @duel.destroy!
+    redirect_to root_path, notice: '削除しました'
+  end
+
   private
 
   def duel_params

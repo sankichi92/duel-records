@@ -1,7 +1,7 @@
 <% now = Time.zone.now %>
 
 <div class="page-header">
-  <h1>デュエルを記録する</h1>
+  <h1>デュエルを編集する</h1>
 </div>
 
 <%= form_for @duel do |f| %>
@@ -17,15 +17,15 @@
 
   <div class="form-group">
     <%= f.label :winner_id %>
-    <%= f.collection_select :winner_id, User.all.order(:nickname), :id, :nickname, { selected: current_user.id }, { class: 'form-control' } %>
+    <%= f.collection_select :winner_id, User.all.order(:nickname), :id, :nickname, {}, { class: 'form-control' } %>
   </div>
   <div class="form-group">
     <%= f.label :loser_id %>
-    <%= f.collection_select :loser_id, User.all.order(:nickname), :id, :nickname, { selected: current_user.id }, { class: 'form-control' } %>
+    <%= f.collection_select :loser_id, User.all.order(:nickname), :id, :nickname, {}, { class: 'form-control' } %>
   </div>
   <div class="form-group">
     <%= f.label :date %>
-    <%= f.date_field :date, start_year: now.year - 1, end_year: now.year, class: 'form-control', value: Time.now.strftime("%Y-%m-%d") %>
+    <%= f.date_field :date, start_year: now.year - 1, end_year: now.year, class: 'form-control' %>
   </div>
   <div class="form-group">
     <%= f.label :life_points %>
@@ -35,5 +35,5 @@
     <%= f.label :content %>
     <%= f.text_area :content, class: 'form-control', row: 3 %>
   </div>
-  <%= f.submit '記録する', class: 'btn btn-default', data: { disabel_with: '作成中……' } %>
+  <%= f.submit '更新する', class: 'btn btn-default', data: { disabel_with: '更新中……' } %>
 <% end %>
