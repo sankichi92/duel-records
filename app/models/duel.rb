@@ -1,6 +1,9 @@
 class Duel < ActiveRecord::Base
-  validates :winner, presence: true
-  validates :loser, presence: true
+  belongs_to :winner, class_name: 'User'
+  belongs_to :loser, class_name: 'User'
+
+  validates :winner_id, presence: true
+  validates :loser_id, presence: true
   validates :date, presence: true
   validates :life_points, numericality: { only_integer: true, greater_than: 0 }
   validates :content, length: { maximum: 2000 }
