@@ -5,49 +5,58 @@
   </h1>
 </div>
 
-<div class="panel panel-default">
-  <div class="panel-heading">
-    対戦日
+<div class="row">
+  <div class="col-md-8">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        対戦日
+      </div>
+      <div class="panel-body">
+        <%= @duel.date.strftime('%Y/%m/%d') %>
+      </div>
+    </div>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        勝者
+      </div>
+      <div class="panel-body">
+        <%= link_to("https://twitter.com/#{@duel.winner.nickname}") do %>
+          <%= image_tag @duel.winner.image_url %>
+          <%= "@#{@duel.winner.nickname}" %>
+        <% end %>
+      </div>
+    </div>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        敗者
+      </div>
+      <div class="panel-body">
+        <%= link_to("https://twitter.com/#{@duel.loser.nickname}") do %>
+          <%= image_tag @duel.loser.image_url %>
+          <%= "@#{@duel.winner.nickname}" %>
+        <% end %>
+      </div>
+    </div>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        残りライフポイント
+      </div>
+      <div class="panel-body">
+        <%= @duel.life_points %>
+      </div>
+    </div>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        内容
+      </div>
+      <div class="panel-body">
+        <%= @duel.content %>
+      </div>
+    </div>
   </div>
-  <div class="panel-body">
-    <%= @duel.date.strftime('%Y/%m/%d') %>
-  </div>
-</div>
-<div class="panel panel-default">
-  <div class="panel-heading">
-    勝者
-  </div>
-  <div class="panel-body">
-    <%= link_to("https://twitter.com/#{@duel.winner.nickname}") do %>
-      <%= image_tag @duel.winner.image_url %>
-      <%= "@#{@duel.winner.nickname}" %>
+  <div class="col-md-4">
+    <% if logged_in? %>
+      <%= link_to 'デュエルを編集する', edit_duel_path(@duel), class: 'btn btn-info btn-lg btn-block' %>
     <% end %>
-  </div>
-</div>
-<div class="panel panel-default">
-  <div class="panel-heading">
-    敗者
-  </div>
-  <div class="panel-body">
-    <%= link_to("https://twitter.com/#{@duel.loser.nickname}") do %>
-      <%= image_tag @duel.loser.image_url %>
-      <%= "@#{@duel.winner.nickname}" %>
-    <% end %>
-  </div>
-</div>
-<div class="panel panel-default">
-  <div class="panel-heading">
-    残りライフポイント
-  </div>
-  <div class="panel-body">
-    <%= @duel.life_points %>
-  </div>
-</div>
-<div class="panel panel-default">
-  <div class="panel-heading">
-    内容
-  </div>
-  <div class="panel-body">
-    <%= @duel.content %>
   </div>
 </div>
