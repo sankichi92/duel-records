@@ -1,4 +1,16 @@
 class User < ActiveRecord::Base
+  has_many :winned_duels, class_name: 'Duel', foreign_key: :winner_id
+  has_many :losed_duels, class_name: 'Duel', foreign_key: :losed_id
+
+  def played_duels
+    Duel.where(['winner_id = ? or loser_id = ?', id, id]).order('date DESC')
+  end
+
+  def rivals
+    winners = played_duels.select(:winner)
+    losers = played_duels.select(:loser)
+  end
+
   def self.find_or_create_from_auth_hash(auth_hash)
     provider = auth_hash[:provider]
     uid = auth_hash[:uid]

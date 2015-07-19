@@ -11,8 +11,11 @@
 </head>
 <body>
 <%= nav_bar fixed: :top, brand: 'DuelRecords',  brand_link: root_path, responsive: true do %>
-  <%= menu_group do %>
-    <%= menu_item 'デュエルを記録する', new_duel_path %>
+  <% if logged_in? %>
+    <%= menu_group do %>
+      <%= menu_item 'デュエルを記録する', new_duel_path %>
+      <%= menu_item '自分の戦績を見る', user_path %>
+    <% end %>
   <% end %>
   <%= menu_group pull: :right do %>
     <% if logged_in? %>
