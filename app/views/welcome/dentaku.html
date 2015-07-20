@@ -1,0 +1,95 @@
+<style>
+  table {
+    width: 100%;
+  }
+</style>
+<div class="row">
+  <div class="col-xs-6">
+    <div id="displayL" class="well lead text-right" style="background-color:#d9edf7"></div>
+  </div>
+  <div class="col-xs-6">
+    <div id="displayR"  class="well lead text-right"></div>
+  </div>
+</div>
+<div class="text-center" style="margin-bottom:20px">
+  <div class="btn-group" role="group">
+    <button id="left" type="button" class="btn btn-lg btn-default"><i class="fa fa-angle-left fa-lg"></i></button>
+    <button id="right" type="button" class="btn btn-lg btn-default"><i class="fa fa-angle-right fa-lg"></i></button>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-9">
+    <table>
+      <tr>
+        <td><button type="button" class="btn btn-default btn-lg btn-block number">7</button></td>
+        <td><button type="button" class="btn btn-default btn-lg btn-block number">8</button></td>
+        <td><button type="button" class="btn btn-default btn-lg btn-block number">9</button></td>
+      </tr>
+      <tr>
+        <td><button type="button" class="btn btn-default btn-lg btn-block number">4</button></td>
+        <td><button type="button" class="btn btn-default btn-lg btn-block number">5</button></td>
+        <td><button type="button" class="btn btn-default btn-lg btn-block number">6</button></td>
+      </tr>
+      <tr>
+        <td><button type="button" class="btn btn-default btn-lg btn-block number">1</button></td>
+        <td><button type="button" class="btn btn-default btn-lg btn-block number">2</button></td>
+        <td><button type="button" class="btn btn-default btn-lg btn-block number">3</button></td>
+      </tr>
+      <tr>
+        <td><button type="button" class="btn btn-default btn-lg btn-block number">0</button></td>
+      </tr>
+    </table>
+  </div>
+  <div class="col-xs-3">
+    <table>
+      <tr>
+        <td><button id="delete" type="button" class="btn btn-warning btn-lg btn-block">DEL</button></td>
+      </tr>
+      <tr>
+        <td><button type="button" class="btn btn-default btn-lg btn-block operator">-</button></td>
+      </tr>
+      <tr>
+        <td><button type="button" class="btn btn-default btn-lg btn-block operator">+</button></td>
+      </tr>
+      <tr>
+        <td><button id="equal" type="button" class="btn btn-primary btn-lg btn-block">=</button></td>
+      </tr>
+    </table>
+  </div>
+</div>
+<hr>
+<div class="row">
+  <div class="col-xs-6">
+    <ul id="logL" class="list-unstyled"></ul>
+  </div>
+  <div class="col-xs-6 text-right">
+    <ul id="logR" class="list-unstyled"></ul>
+  </div>
+</div>
+<script>
+  var dentakuL = new DuelDentaku('#displayL', '#logL');
+  var dentakuR = new DuelDentaku('#displayR', '#logR');
+  var selected = dentakuL;
+  $('#left').click(function() {
+    selected = dentakuL;
+    $('#displayL').css('background-color', '#d9edf7');
+    $('#displayR').css('background-color', '');
+  });
+  $('#right').click(function() {
+    selected = dentakuR;
+    $('#displayL').css('background-color', '');
+    $('#displayR').css('background-color', '#d9edf7');
+  });
+  $('.number').click(function() {
+    selected.number($(this).text());
+  });
+  $('.operator').click(function() {
+    selected.operator($(this).text());
+  });
+  $('#delete').click(function() {
+    selected.del();
+  });
+  $('#equal').click(function() {
+    selected.equal();
+  });
+</script>
