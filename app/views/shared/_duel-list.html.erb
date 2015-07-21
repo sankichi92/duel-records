@@ -1,9 +1,0 @@
-<%= link_to(duel, class: 'list-group-item') do %>
-  <h4 class="list-group-item-heading">
-    <span class="text-danger">勝: </span>@<%= duel.winner.nickname %> / <span class="text-primary">敗: </span>@<%= duel.loser.nickname %>
-  </h4>
-  <p>
-    <%= duel.date.strftime('%Y/%m/%d') %>・<%= duel.life_points %><br>
-    <%= duel.content %>
-  </p>
-<% end %>
