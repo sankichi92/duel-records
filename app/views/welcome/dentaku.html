@@ -1,5 +1,6 @@
 <style>
   table {
+    table-layout: fixed;
     width: 100%;
   }
 </style>
@@ -37,6 +38,8 @@
       </tr>
       <tr>
         <td><button type="button" class="btn btn-default btn-lg btn-block number">0</button></td>
+        <td><button type="button" class="btn btn-default btn-lg btn-block number">00</button></td>
+        <td><button id="equal" type="button" class="btn btn-primary btn-lg btn-block">=</button></td>
       </tr>
     </table>
   </div>
@@ -46,13 +49,13 @@
         <td><button id="delete" type="button" class="btn btn-warning btn-lg btn-block">DEL</button></td>
       </tr>
       <tr>
+        <td><button type="button" class="btn btn-default btn-lg btn-block operator">/2</button></td>
+      </tr>
+      <tr>
         <td><button type="button" class="btn btn-default btn-lg btn-block operator">-</button></td>
       </tr>
       <tr>
         <td><button type="button" class="btn btn-default btn-lg btn-block operator">+</button></td>
-      </tr>
-      <tr>
-        <td><button id="equal" type="button" class="btn btn-primary btn-lg btn-block">=</button></td>
       </tr>
     </table>
   </div>
