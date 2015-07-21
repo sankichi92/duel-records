@@ -9,7 +9,7 @@ class Duel < ActiveRecord::Base
   validates :content, length: { maximum: 2000 }
   validate :winner_and_loser_should_be_different
 
-  scope :played_duels, ->(user_id) { where(['winner_id = ? OR loser_id = ?', "#{user_id}" , "#{user_id}"]) }
+  scope :played_by, ->(user_id) { where(['winner_id = ? OR loser_id = ?', "#{user_id}" , "#{user_id}"]) }
 
   private
 

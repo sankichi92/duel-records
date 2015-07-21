@@ -26,7 +26,7 @@
       <% @users.each do |u| %>
         <tr>
           <td><%= "@#{u.nickname}" %></td>
-          <td><%= sum =  @duels.played_duels(u.id).count %></td>
+          <td><%= sum =  @duels.played_by(u.id).count %></td>
           <td><%= win =  @duels.where(loser_id: u.id).count %></td>
           <td><%= sum - win %></td>
           <td><%= sum == 0 ? '- ' : win / sum * 100 %>%</td>
