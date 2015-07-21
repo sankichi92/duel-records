@@ -21,7 +21,7 @@
           <td><%= sum =  @user.played_duels.played_duels(u.id).count %></td>
           <td><%= win =  @user.winned_duels.where(loser_id: u.id).count %></td>
           <td><%= sum - win %></td>
-          <td><%= win / sum * 100 %>%</td>
+          <td><%= win / sum * 100  if sum != 0 %>%</td>
         </tr>
       <% end %>
       <tr>
@@ -29,7 +29,7 @@
         <td><%= sum =  @user.played_duels.count %></td>
         <td><%= win =  @user.winned_duels.count %></td>
         <td><%= sum - win %></td>
-        <td><%= win / sum * 100 %>%</td>
+        <td><%= win / sum * 100 if sum != 0 %>%</td>
       </tr>
     </tbody>
   </table>
