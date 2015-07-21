@@ -17,7 +17,7 @@ class Duel < ActiveRecord::Base
     return unless winner && loser
 
     if winner == loser
-      errors.add(:loser, 'は勝者と異なるアカウントに設定してください')
+      errors.add(:loser_id, 'は勝者と異なるアカウントに設定してください')
     end
   end
 end

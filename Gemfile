@@ -39,6 +39,10 @@ gem 'twitter-bootstrap-rails'
 gem 'omniauth'
 gem 'omniauth-twitter'
 
+# Use Kaminari for pagenation
+gem 'kaminari'
+gem 'kaminari-bootstrap'
+
 group :development, :test do
   # Use sqlite3 as the database for Active Record
   gem 'sqlite3'
