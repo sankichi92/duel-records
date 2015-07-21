@@ -5,11 +5,10 @@
   </h1>
 </div>
 <%= form_tag('', method: 'get', class: 'form-inline', enforce_utf8: false) do %>
-  期間を指定:
-  <%= date_field_tag :start, (t - 30*24*60*60).strftime("%Y-%m-%d"), class: 'form-control' %>
+  <%= date_field_tag :start, params[:start] ? params[:start] : (t - 30*24*60*60).strftime("%Y-%m-%d"), class: 'form-control' %>
   〜
-  <%= date_field_tag :end, t.strftime("%Y-%m-%d"), class: 'form-control' %>
-  <%= submit_tag '送信', class: 'btn btn-default', name: nil %>
+  <%= date_field_tag :end, params[:end] ? params[:end] : t.strftime("%Y-%m-%d"), class: 'form-control' %>
+  <%= submit_tag '期間を指定', class: 'btn btn-default', name: nil %>
 <% end %>
 <hr>
 <div class="table-responsive">
@@ -27,16 +26,16 @@
       <% @users.each do |u| %>
         <tr>
           <td><%= "@#{u.nickname}" %></td>
-          <td><%= sum =  @user.played_duels.played_duels(u.id).count %></td>
-          <td><%= win =  @user.winned_duels.where(loser_id: u.id).count %></td>
+          <td><%= sum =  @duels.played_duels(u.id).count %></td>
+          <td><%= win =  @duels.where(loser_id: u.id).count %></td>
           <td><%= sum - win %></td>
           <td><%= sum == 0 ? '- ' : win / sum * 100 %>%</td>
         </tr>
       <% end %>
       <tr>
         <td>合計</td>
-        <td><%= sum =  @user.played_duels.count %></td>
-        <td><%= win =  @user.winned_duels.count %></td>
+        <td><%= sum =  @duels.count %></td>
+        <td><%= win =  @duels.where(winner_id: @user.id).count %></td>
         <td><%= sum - win %></td>
         <td><%= sum == 0 ? '- ' : win / sum * 100 %>%</td>
       </tr>
@@ -45,5 +44,5 @@
 </div>
 <hr>
 <div class="list-group">
-  <%= render partial: 'duel', collection: @user.played_duels %>
+  <%= render partial: 'duel', collection: @duels %>
 </div>
