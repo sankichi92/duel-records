@@ -36,16 +36,5 @@
 </div>
 <hr>
 <div class="list-group">
-  <% @user.played_duels.each do |duel| %>
-    <%= link_to(duel, class: 'list-group-item') do %>
-      <h4 class="list-group-item-heading">
-        <%= "@#{duel.winner.nickname} v.s. @#{duel.loser.nickname}" %>
-      </h4>
-      <p>
-        <%= duel.date.strftime('%Y/%m/%d') %><br>
-        <%= duel.life_points %><br>
-        <%= duel.content %>
-      </p>
-    <% end %>
-  <% end %>
+  <%= render partial: 'duel', collection: @user.played_duels %>
 </div>

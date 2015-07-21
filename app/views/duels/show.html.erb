@@ -33,7 +33,7 @@
       <div class="panel-body">
         <%= link_to("https://twitter.com/#{@duel.loser.nickname}") do %>
           <%= image_tag @duel.loser.image_url %>
-          <%= "@#{@duel.winner.nickname}" %>
+          <%= "@#{@duel.loser.nickname}" %>
         <% end %>
       </div>
     </div>
