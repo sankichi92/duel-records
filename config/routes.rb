@@ -3,8 +3,13 @@ Rails.application.routes.draw do
   get '/auth/:provider/callback' => 'sessions#create'
   get '/logout' => 'sessions#destroy', as: :logout
   get '/dentaku' => 'welcome#dentaku', as: :dentaku
+
   resources :duels, except: :index
-  resource :user, only: :show
+
+  resource :user, only: [:show, :destroy] do
+    get 'retire'
+  end
+
   match '*path' => 'application#error404', via: :all
 
   # The priority is based upon order of creation: first created -> highest priority.

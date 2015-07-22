@@ -1,6 +1,8 @@
 <div class="page-header">
   <h1>
-    <%= "@#{@duel.winner.nickname} v.s. @#{@duel.loser.nickname}" %>
+    <%= @duel.winner ? "@#{@duel.winner.nickname}" : '退会したユーザ' %>
+    v.s.
+    <%= @duel.loser ? "@#{@duel.loser.nickname}" : '退会したユーザ' %>
     <small><%= @duel.date %></small>
   </h1>
 </div>
@@ -12,9 +14,13 @@
         勝者
       </div>
       <div class="panel-body">
-        <%= link_to("https://twitter.com/#{@duel.winner.nickname}") do %>
-          <%= image_tag @duel.winner.image_url %>
-          <%= "@#{@duel.winner.nickname}" %>
+        <% if @duel.winner %>
+          <%= link_to("https://twitter.com/#{@duel.winner.nickname}") do %>
+            <%= image_tag @duel.winner.image_url %>
+            <%= "@#{@duel.winner.nickname}" %>
+          <% end %>
+        <% else %>
+          退会したユーザ
         <% end %>
       </div>
     </div>
@@ -23,9 +29,13 @@
         敗者
       </div>
       <div class="panel-body">
-        <%= link_to("https://twitter.com/#{@duel.loser.nickname}") do %>
-          <%= image_tag @duel.loser.image_url %>
-          <%= "@#{@duel.loser.nickname}" %>
+        <% if @duel.loser %>
+          <%= link_to("https://twitter.com/#{@duel.loser.nickname}") do %>
+            <%= image_tag @duel.loser.image_url %>
+            <%= "@#{@duel.loser.nickname}" %>
+          <% end %>
+        <% else %>
+          退会したユーザ
         <% end %>
       </div>
     </div>
