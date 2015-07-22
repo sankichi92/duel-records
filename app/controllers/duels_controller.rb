@@ -12,7 +12,7 @@ class DuelsController < ApplicationController
   def create
     @duel = Duel.new(duel_params)
     if @duel.save
-      redirect_to @duel, notice: '作成しました'
+      redirect_to root_path, notice: '作成しました'
     else
       render :new
     end
