@@ -37,7 +37,7 @@
         <td><%= sum =  @duels.count %></td>
         <td><%= win =  @duels.where(winner_id: @user.id).count %></td>
         <td><%= sum - win %></td>
-        <td><%= sum == 0 ? '- ' : win / sum * 100 %>%</td>
+        <td><%= sum == 0 ? '- ' : (win.to_f / sum).round(4) * 100 %>%</td>
       </tr>
     </tbody>
   </table>
