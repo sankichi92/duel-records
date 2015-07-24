@@ -14,9 +14,8 @@
 <div class="page-header">
   <h2>Rankings</h2>
 </div>
-<dl class="dl-horizontal lead">
+<ol class="list-unstyled">
   <% @users.each do |u| %>
-    <dt><%= u.rating %></dt>
-    <dd><%= "@#{u.nickname}" %></dd>
+    <li class="lead"><%= image_tag u.image_url %> <%= "@#{u.nickname} (#{u.rating})" %></li>
   <% end %>
-</dl>
+</ol>
