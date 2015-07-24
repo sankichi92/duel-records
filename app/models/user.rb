@@ -17,4 +17,20 @@ class User < ActiveRecord::Base
       user.image_url = image_url
     end
   end
+
+  private
+
+  def self.calculate_all_ratings
+    update_all(rating: 1500)
+    duels = Duel.order('date, created_at')
+    duels.each do |d|
+      w = d.winner.rating
+      l = d.loser.rating
+      e = 1 / (10 ** ((l - w) / 1000) + 1)
+      w += 16 * (3 - e)
+      l += 16 * (0 - (1 - e))
+      d.winner.update_attribute(:rating, w)
+      d.loser.update_attribute(:rating, l)
+    end
+  end
 end
