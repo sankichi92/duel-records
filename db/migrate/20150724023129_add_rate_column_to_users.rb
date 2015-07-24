@@ -1,5 +1,5 @@
 class AddRateColumnToUsers < ActiveRecord::Migration
   def change
-    add_column :duels, :rate, :integer, default: 1500, null: false
+    add_column :users, :rating, :integer, default: 1500, null: false
   end
 end
