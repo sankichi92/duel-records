@@ -1,7 +1,21 @@
+<div class="jumbotron">
+  <h1>DuelRecords</h1>
+  <p>
+    とある研究室のデュエル戦績管理Webアプリケーション
+  </p>
+  <p>
+    <% if logged_in? %>
+      <%= link_to 'デュエルを記録する', new_duel_path, class: 'btn btn-primary btn-lg', role: 'button' %>
+    <% else %>
+      <%= link_to 'twitterでログイン', '/auth/twitter', class: 'btn btn-primary btn-lg', role: 'button' %>
+    <% end %>
+  </p>
+</div>
 <div class="page-header">
-  <h1>Duel Records</h1>
+  <h2>Rankings</h2>
 </div>
-<div class="list-group">
-  <%= render @duels %>
-  <%= paginate @duels %>
-</div>
+<ol>
+  <% @users.each do |u| %>
+    <li class="lead"><%= "@#{u.nickname} (#{u.rating})" %></li>
+  <% end %>
+</ol>

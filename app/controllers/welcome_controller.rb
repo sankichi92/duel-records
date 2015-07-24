@@ -1,6 +1,6 @@
 class WelcomeController < ApplicationController
   def index
-    @duels = Duel.page(params[:page]).order('date DESC, created_at DESC')
+    @users = User.order('rating DESC')
   end
 
   def dentaku

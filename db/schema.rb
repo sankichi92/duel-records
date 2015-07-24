@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150724015505) do
+ActiveRecord::Schema.define(version: 20150724023129) do
 
   create_table "duels", force: :cascade do |t|
     t.integer  "winner_id"
@@ -27,12 +27,13 @@ ActiveRecord::Schema.define(version: 20150724015505) do
   add_index "duels", ["winner_id"], name: "index_duels_on_winner_id"
 
   create_table "users", force: :cascade do |t|
-    t.string   "provider",   null: false
-    t.string   "uid",        null: false
-    t.string   "nickname",   null: false
-    t.string   "image_url",  null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "provider",                  null: false
+    t.string   "uid",                       null: false
+    t.string   "nickname",                  null: false
+    t.string   "image_url",                 null: false
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+    t.integer  "rating",     default: 1500, null: false
   end
 
   add_index "users", ["provider", "uid"], name: "index_users_on_provider_and_uid", unique: true

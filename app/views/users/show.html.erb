@@ -37,7 +37,7 @@
         <td><%= sum =  @duels.count %></td>
         <td><%= win =  @duels.where(winner_id: @user.id).count %></td>
         <td><%= sum - win %></td>
-        <td><%= sum == 0 ? '- ' : win / sum * 100 %>%</td>
+        <td><%= sum == 0 ? '- ' : (win.to_f / sum).round(4) * 100 %>%</td>
       </tr>
     </tbody>
   </table>
@@ -46,3 +46,6 @@
 <div class="list-group">
   <%= render @duels %>
 </div>
+<p class="text-right">
+  <%= link_to '退会する', retire_user_path %>
+</p>
