@@ -1,5 +1,9 @@
 class DuelsController < ApplicationController
-  before_action :authenticate, except: :show
+  before_action :authenticate, except: [:show, :index]
+
+  def index
+    @duels = Duel.page(params[:page]).order('date DESC, created_at DESC')
+  end
 
   def show
     @duel = Duel.find(params[:id])
@@ -12,7 +16,7 @@ class DuelsController < ApplicationController
   def create
     @duel = Duel.new(duel_params)
     if @duel.save
-      redirect_to root_path, notice: '作成しました'
+      redirect_to duels_path, notice: '作成しました'
     else
       render :new
     end

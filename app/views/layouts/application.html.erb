@@ -12,15 +12,13 @@
 <body>
 <%= nav_bar fixed: :top, brand: 'DuelRecords',  brand_link: root_path, responsive: true do %>
   <%= menu_group do %>
-    <% if logged_in? %>
-      <%= menu_item 'デュエルを記録する', new_duel_path %>
-      <%= menu_item '自分の戦績を見る', user_path %>
-    <% end %>
-    <%= menu_item 'デュエル電卓を使う', dentaku_path %>
+    <%= menu_item 'デュエル一覧', duels_path %>
+    <%= menu_item 'デュエル電卓', dentaku_path %>
   <% end %>
   <%= menu_group pull: :right do %>
     <% if logged_in? %>
-      <%= menu_item '退会', retire_user_path %>
+      <%= menu_item '記録する', new_duel_path %>
+      <%= menu_item 'My Page', user_path %>
       <%= menu_item 'ログアウト', logout_path %>
     <% else %>
       <%= menu_item 'twitterでログイン', '/auth/twitter' %>

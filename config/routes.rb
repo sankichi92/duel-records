@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   get '/logout' => 'sessions#destroy', as: :logout
   get '/dentaku' => 'welcome#dentaku', as: :dentaku
 
-  resources :duels, except: :index
+  resources :duels
 
   resource :user, only: [:show, :destroy] do
     get 'retire'
