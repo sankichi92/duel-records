@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
-  has_many :winned_duels, class_name: 'Duel', foreign_key: :winner_id
-  has_many :losed_duels, class_name: 'Duel', foreign_key: :losed_id
+  has_many :winned_duels, class_name: 'Duel', foreign_key: :winner_id, dependent: :nullify
+  has_many :losed_duels, class_name: 'Duel', foreign_key: :loser_id, dependent: :nullify
 
   def played_duels
     Duel.where(['winner_id = ? or loser_id = ?', id, id]).order('date DESC')

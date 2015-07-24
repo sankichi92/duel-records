@@ -11,11 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150718142340) do
+ActiveRecord::Schema.define(version: 20150724015505) do
 
   create_table "duels", force: :cascade do |t|
-    t.integer  "winner_id",   null: false
-    t.integer  "loser_id",    null: false
+    t.integer  "winner_id"
+    t.integer  "loser_id"
     t.date     "date",        null: false
     t.integer  "life_points"
     t.text     "content"
