@@ -14,8 +14,9 @@
 <div class="page-header">
   <h2>Rankings</h2>
 </div>
-<ol>
+<dl class="dl-horizontal lead">
   <% @users.each do |u| %>
-    <li class="lead"><%= "@#{u.nickname} (#{u.rating})" %></li>
+    <dt><%= u.rating %></dt>
+    <dd><%= "@#{u.nickname}" %></dd>
   <% end %>
-</ol>
+</dl>
