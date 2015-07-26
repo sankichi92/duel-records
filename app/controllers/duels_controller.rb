@@ -2,7 +2,7 @@ class DuelsController < ApplicationController
   before_action :authenticate, except: [:show, :index]
 
   def index
-    @duels = Duel.page(params[:page]).order('date DESC, created_at DESC')
+    @duels = Duel.page(params[:page]).per(10).order('date DESC, created_at DESC')
   end
 
   def show
