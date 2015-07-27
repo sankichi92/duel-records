@@ -23,7 +23,7 @@ class User < ActiveRecord::Base
   def self.calculate_all_ratings
     users = Hash.new(1500)
     Duel.order('date, created_at').each do |d|
-      e = 1.0 / (10**((users[d.loser_id] - users[d.winner_id]) / 1000.0) + 1)
+      e = 1 / (10**((users[d.loser_id] - users[d.winner_id]) / 1000.0) + 1)
       users[d.winner_id] += 16 * (3 - e)
       users[d.loser_id] += 16 * (0 - (1 - e))
     end
