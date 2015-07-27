@@ -18,8 +18,6 @@ class User < ActiveRecord::Base
     end
   end
 
-  private
-
   def self.calculate_all_ratings
     users = Hash.new(1500)
     Duel.order('date, created_at').each do |d|
