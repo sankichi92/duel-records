@@ -26,11 +26,11 @@ class User < ActiveRecord::Base
     duels.each do |d|
       w = d.winner.rating
       l = d.loser.rating
-      e = 1 / (10 ** ((l - w) / 1000) + 1)
+      e = 1.0 / (10**((l - w) / 1000.0) + 1)
       w += 16 * (3 - e)
       l += 16 * (0 - (1 - e))
-      d.winner.update_attribute(:rating, w)
-      d.loser.update_attribute(:rating, l)
+      d.winner.update_attribute(:rating, w.to_i)
+      d.loser.update_attribute(:rating, l.to_i)
     end
   end
 end

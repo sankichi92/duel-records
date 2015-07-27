@@ -20,11 +20,11 @@ class Duel < ActiveRecord::Base
   def calculate_rating
     w = winner.rating
     l = loser.rating
-    e = 1 / (10**((l - w) / 1000) + 1)
+    e = 1.0 / (10**((l - w) / 1000.0) + 1)
     w += 16 * (3 - e)
     l += 16 * (0 - (1 - e))
-    winner.update_attribute(:rating, w)
-    loser.update_attribute(:rating, l)
+    winner.update_attribute(:rating, w.to_i)
+    loser.update_attribute(:rating, l.to_i)
   end
 
   def calculate_all_ratings
