@@ -21,16 +21,15 @@ class User < ActiveRecord::Base
   private
 
   def self.calculate_all_ratings
+    users = Hash.new(1500)
+    Duel.order('date, created_at').each do |d|
+      e = 1.0 / (10**((users[d.loser_id] - users[d.winner_id]) / 1000.0) + 1)
+      users[d.winner_id] += 16 * (3 - e)
+      users[d.loser_id] += 16 * (0 - (1 - e))
+    end
     update_all(rating: 1500)
-    duels = Duel.order('date, created_at')
-    duels.each do |d|
-      w = d.winner.rating
-      l = d.loser.rating
-      e = 1.0 / (10**((l - w) / 1000.0) + 1)
-      w += 16 * (3 - e)
-      l += 16 * (0 - (1 - e))
-      d.winner.update_attribute(:rating, w.to_i)
-      d.loser.update_attribute(:rating, l.to_i)
+    users.each do |id, rating|
+      find(id).update_attribute(:rating, rating.to_i)
     end
   end
 end
