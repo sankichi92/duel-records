@@ -24,20 +24,21 @@
     </thead>
     <tbody>
       <% @users.each do |u| %>
+        <% winned = @duels.where(loser_id: u.id).count; losed = @duels.where(winner_id: u.id).count %>
         <tr>
           <td><%= "@#{u.nickname}" %></td>
-          <td><%= sum =  @duels.played_by(u.id).count %></td>
-          <td><%= win =  @duels.where(loser_id: u.id).count %></td>
-          <td><%= sum - win %></td>
-          <td><%= sum == 0 ? '- ' : (win.to_f / sum).round(4) * 100 %>%</td>
+          <td><%= sum = winned + losed %></td>
+          <td><%= winned %></td>
+          <td><%= losed %></td>
+          <td><%= sum == 0 ? '-' : (winned * 100.0 / sum).round(2) %> %</td>
         </tr>
       <% end %>
       <tr>
         <td>合計</td>
         <td><%= sum =  @duels.count %></td>
-        <td><%= win =  @duels.where(winner_id: @user.id).count %></td>
-        <td><%= sum - win %></td>
-        <td><%= sum == 0 ? '- ' : (win.to_f / sum).round(4) * 100 %>%</td>
+        <td><%= winned =  @duels.where(winner_id: @user.id).count %></td>
+        <td><%= sum - winned %></td>
+        <td><%= sum == 0 ? '-' : (winned * 100.0 / sum).round(2) %> %</td>
       </tr>
     </tbody>
   </table>
