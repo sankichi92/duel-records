@@ -14,8 +14,16 @@
 <div class="page-header">
   <h2>Rankings</h2>
 </div>
-<ol class="list-unstyled">
+<ul class="media-list">
   <% @users.each do |u| %>
-    <li class="lead"><%= image_tag u.image_url %> <%= "@#{u.nickname} (#{u.rating})" %></li>
+    <li class="media">
+      <div class="pull-left">
+        <%= image_tag(u.image_url, class: "media-object") %>
+      </div>
+      <div class="media-body">
+        <h4 class="media-heading"><%= "@#{u.nickname}" %></h4>
+        <%= "#{u.rating} / #{u.winned_duels.count}勝#{u.losed_duels.count}敗" %>
+      </div>
+    </li>
   <% end %>
-</ol>
+</ul>
