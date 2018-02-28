@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.2.3'
+gem 'rails', '4.2.7.1'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -36,7 +36,7 @@ gem 'less-rails'
 gem 'twitter-bootstrap-rails'
 
 # Use Twitter OAuth
-gem 'omniauth'
+gem 'omniauth', '1.3.2'
 gem 'omniauth-twitter'
 
 # Use Kaminari for pagenation
